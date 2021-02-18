@@ -1,0 +1,7 @@
+[user]
+	name = Brice Letcher
+	email = bletcher@ebi.ac.uk
+[credential]
+	helper = store
+[core]
+	editor = vim

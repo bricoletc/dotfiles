@@ -220,7 +220,7 @@ alias smbEBI='nautilus --no-desktop smb://pcserv.windows.ebi.ac.uk' # Also have 
 ##################################################
 
 ## Paths
-Softs="${HOME}/Softs/"
+Softs="${HOME}/Softs"
 PATH=${Softs}:$PATH
 PATH=${Softs}/clion-2020.3.1/bin/:$PATH
 PATH=${Softs}/pycharm-2020.1/bin/:$PATH
@@ -235,6 +235,8 @@ PATH=${Softs}/artemis:${Softs}/seaview:$PATH
 PATH=${Softs}/cdhit:$PATH
 PATH=${Softs}/standard-RAxML/:$PATH
 PATH=${Softs}/minimap2-2.17_x64-linux/:$PATH
+PATH="${Softs}/singularity_3.5.0/builddir/":$PATH
+PATH="${Softs}/enaBrowserTools/python3/":$PATH
 PATH=${HOME}/.poetry/bin:${PATH}
 PATH=/home/brice/Desktop/git_repos/dev_venv/bin/keyring:$PATH 
 PATH=/home/brice/Desktop/main_PhD/git_repos/iqbal-lab/martin_bioinf_scripts/python:$PATH

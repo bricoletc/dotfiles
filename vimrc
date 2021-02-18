@@ -50,7 +50,7 @@ set tags+=./tags;/
 " __clang-format__
 function! Formatonsave()
   let l:formatdiff = 1
-  pyf ~/.vim/clang-format.py
+  py3f ~/.vim/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
@@ -82,8 +82,12 @@ nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 set tabstop=4
 set expandtab
 set shiftwidth=4
-set nu
+set number
 set ignorecase
+set title
+
+" Place backup files in own directory; double slash avoids same file name ambiguity
+:set backupdir=~/.vim/backup//,.,/tmp//
 
 """ YouCompleteMe
 " Remove the documentation popup by default, and add a mapping to trigger it
@@ -91,6 +95,8 @@ let g:ycm_auto_hover = ""
 nmap <leader>d <plug>(YCMHover)
 " Run the 'guessing' GoTo: go to declaration/definition, include file, ...
 nmap <leader>g :YcmCompleter GoTo<CR>
+" Error diagnostics go to `locationlist`: `:lopen`, `:lclose`
+let g:ycm_always_populate_location_list = 1
 
 " Get all references to symbol under cursor
 nmap <leader>r :YcmCompleter GoToReferences<CR>
@@ -99,6 +105,9 @@ nmap <leader>r :YcmCompleter GoToReferences<CR>
 " Make it obvious where 80 characters is
 "set textwidth=88
 set colorcolumn=89
+
+" Quicker buffer movement
+nnoremap <leader>b :ls<CR>:b<Space>
 
 " Quicker window movement and exit
 nnoremap <C-j> <C-w>j
@@ -117,6 +126,9 @@ nnoremap <leader>v :edit $HOME/.vimrc<CR>
 
 " Paste current filename
 nnoremap <leader>f "%p
+
+" Open new window at jumplist target number x (eg for equivalent of Ctrl-W s 2 Ctrl-O, use 2<leader>j)
+nnoremap <leader>j :<C-u>execute 'split +normal\ ' . v:count . '<C-o>'<CR>
 
 """""""""""""""""""""""""""""""""""
 
