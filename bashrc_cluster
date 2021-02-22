@@ -180,11 +180,11 @@ set -o vi
 # export PATH=/nfs/software/software/prefix/usr/bin:$PATH
 
 # Login at research1
-ME_nfs=/nfs/research1/zi/bletcher
-ME_hps=/hps/nobackup/research/iqbal/bletcher
+ME_nfs=/nfs/research/iqbal/bletcher
+ME_hps=/hps/nobackup/iqbal/bletcher
 cd $ME_hps
 
-export TMPDIR="/hps/nobackup/research/iqbal/bletcher/tmp"
+export TMPDIR="${ME_hps}/tmp"
 export TMP=$"TMPDIR"
 #SINGULARITY_BINDS="/hps/nobackup/research/iqbal,/nfs/research1/zi,${TMPDIR}:/scratch"
 #export SINGULARITY_CONTAIN=TRUE
@@ -192,8 +192,8 @@ export TMP=$"TMPDIR"
 
 
 # Source the team's software
-software_dir="/nfs/research1/zi/software"
-source ${software_dir}/sourceme
+software_dir="/hps/software/iqbal"
+[ -f ${software_dir}/sourceme ] && source ${software_dir}/sourceme 
 
 # Source modules installed by systems (Important for GCC/G++)
 #.   /nfs/software/noah/spack/share/spack/setup-env.sh
