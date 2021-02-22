@@ -152,13 +152,16 @@ mcd(){ mkdir -p "$1" && cd "$1";}
 alias bp='bpeek -f'
 alias bj='bjobs'
 alias jupyter_compute='jupyter-lab --no-browser --ip 0.0.0.0 --port=8889'
-alias _load_="lsload | awk '{a[\$2]++} END{ for (i in a) {print a[i],i}}'"
+alias cluster_LOAD="lsload | awk '{a[\$2]++} END{ for (i in a) {print a[i],i}}'"
 
-alias userPENDS="bjobs -u all | grep PEND | tr -s ' ' | cut -f2 -d ' ' | sort | uniq -c | sort -n -r" # Pending jobs, number per users
+_cluster_users="tr -s ' ' | cut -f2 -d ' ' | sort | uniq -c | sort -n -r"
+alias cluster_USERJOBS="bjobs -u all | ${_cluster_users}" # Pending jobs, number per users
+alias cluster_USERPENDS="bjobs -u all | grep PEND | ${_cluster_users}" # Pending jobs, number per users
 
-lsPEND(){ # Pending priority numbers, for user $1
+cluster_NUMPEND(){ # Pending priority numbers, for user $1
 	bjobs -u all | grep PEND | awk '{jobs += 1; if ($2=='\"$1\"') {print "L: "jobs, $0}} END{print "Total num pending jobs: "jobs}'
 }
+alias cluster_STATUS='badmin showstatus'
 
 # function to start an interactive jobs with given memory and threads
 # usage: bsub_i <mem_in_gb> <threads>
@@ -168,7 +171,6 @@ bsub_i() {
     threads="${2:-1}"
     bsub -Is -n "$threads" -R "span[hosts=1] select[mem>${mem}] rusage[mem=${mem}]" -M"$mem" "$SHELL"
 }
-alias cluster_info='badmin showstatus'
 
 
 #########################
@@ -179,12 +181,12 @@ set -o vi
 # Shared installation of software for predocs
 # export PATH=/nfs/software/software/prefix/usr/bin:$PATH
 
-# Login at research1
-ME_nfs=/nfs/research/iqbal/bletcher
+# Login at nobackup
+ME_nfs=/nfs/research/zi/bletcher
 ME_hps=/hps/nobackup/iqbal/bletcher
 cd $ME_hps
 
-export TMPDIR="${ME_hps}/tmp"
+export TMPDIR="/tmp" # Note, cannot set tmp to hps on codon, as hps is not writable
 export TMP=$"TMPDIR"
 #SINGULARITY_BINDS="/hps/nobackup/research/iqbal,/nfs/research1/zi,${TMPDIR}:/scratch"
 #export SINGULARITY_CONTAIN=TRUE
@@ -192,20 +194,24 @@ export TMP=$"TMPDIR"
 
 
 # Source the team's software
-software_dir="/hps/software/iqbal"
-[ -f ${software_dir}/sourceme ] && source ${software_dir}/sourceme 
+SOFTWARE="/hps/software/users/iqbal"
+[ -f ${SOFTWARE}/sourceme ] && source ${SOFTWARE}/sourceme 
 
-# Source modules installed by systems (Important for GCC/G++)
+# Source modules installed by systems 
+module load gcc-9.3.0-gcc-9.3.0-lnsweiq
+module load python-3.8.6-gcc-9.3.0-fwf7y73
+module load singularity-3.5.3-gcc-9.3.0-o6v53jz
+# noah gcc:
 #.   /nfs/software/noah/spack/share/spack/setup-env.sh
 #.   /nfs/software/noah/spack/opt/spack/linux-rhel7-sandybridge/gcc-4.8.5/lmod-8.3-dyllmlkbirp7xbo5ya3syrlz6qbnvyjc/lmod/lmod/init/bash
 
 # Source my vim installation
-PATH=${software_dir}/vim/vim-8.2.0992/src:$PATH
-export VIMRUNTIME=/nfs/research1/zi/software/vim/vim-8.2.0992/runtime
+#PATH=${SOFTWARE}/vim/vim-8.2.0992/src:$PATH
+#export VIMRUNTIME=/nfs/research1/zi/software/vim/vim-8.2.0992/runtime
 
 # Source my python installation
-export PATH=${software_dir}/Python-3.8.1_sharedlib/bin:$PATH
-export LD_LIBRARY_PATH=${software_dir}/Python-3.8.1_sharedlib/lib:$LD_LIBRARY_PATH
+export PATH=${SOFTWARE}/Python-3.8.1_sharedlib/bin:$PATH
+export LD_LIBRARY_PATH=${SOFTWARE}/Python-3.8.1_sharedlib/lib:$LD_LIBRARY_PATH
 
 
 
