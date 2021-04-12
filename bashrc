@@ -186,14 +186,10 @@ sdu(){
 
 ######## Cluster ########
 
-### Load ###
-alias _load_="lsload | awk '{a[\$2]++} END{ for (i in a) {print a[i],i}}'"
-
-alias userPENDS="bjobs -u all | grep PEND | tr -s ' ' | cut -f2 -d ' ' | sort | uniq -c | sort -n -r" # Pending jobs, number per users
-
-lsPEND(){ # Pending priority numbers, for user $1
-	bjobs -u all | grep PEND | awk '{jobs += 1; if ($2=='\"$1\"') {print "L: "jobs, $0}} END{print "Total num pending jobs: "jobs}'
-}
+# Login
+CL_CODON="bletcher@codon_ext"
+# Covid VM
+CL_COVID="ubuntu@140.238.99.97"
 
 # Tunnel to jupyter lab running on cluster
 yoda_tunnel_ssh(){
@@ -210,6 +206,7 @@ yoda_tunnel_ssh(){
 alias myoda='sshfs bletcher@yoda:/nfs/leia/research/iqbal /mnt/yoda'
 alias myoda_ext='sshfs bletcher@yoda_ext:/ /mnt/yoda'
 alias mnoah_ext='sshfs bletcher@noah_ext:/ /mnt/noah'
+alias mcodon_ext='sshfs bletcher@codon_ext:/ /mnt/codon'
 
 
 # generate OTP for connecting to ligate. The TOTP token is TOTP12901CC5
@@ -240,6 +237,7 @@ PATH="${Softs}/enaBrowserTools/python3/":$PATH
 PATH=${HOME}/.poetry/bin:${PATH}
 PATH=/home/brice/Desktop/git_repos/dev_venv/bin/keyring:$PATH 
 PATH=/home/brice/Desktop/main_PhD/git_repos/iqbal-lab/martin_bioinf_scripts/python:$PATH
+PATH=/usr/local/pulse/:$PATH
 
 # pyenv
 export PATH="/home/brice/.pyenv/bin:$PATH"
@@ -267,8 +265,10 @@ GMTOOLS="/home/brice/Desktop/main_PhD/git_repos/gramtools"
 ANALYSIS="/home/brice/Desktop/main_PhD/analyses"
 GITS="/home/brice/Desktop/main_PhD/git_repos"
 WKPLACE="/home/brice/Desktop/workplace"
+THESIS="/home/brice/Desktop/materials_PhD/writing/thesis/my_thesis_cam"
 LATEST_PRES="/home/brice/Desktop/material_PhD/presentations/PhD_day_year2/"
 SNAKEFMT="/home/brice/Desktop/extra_curri_PhD/snakemake_formatting/snakefmt"
+COVID="/home/brice/Desktop/main_PhD/side_projects/covid_pca"
 
 
 # >>> conda initialize >>>

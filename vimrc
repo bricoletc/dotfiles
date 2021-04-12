@@ -42,7 +42,7 @@ au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'
 
 " ___code formatting___
 " __black__
-autocmd BufWritePre *.py execute ':Black'
+"autocmd BufWritePre *.py execute ':Black'
 
 " tags
 set tags+=./tags;/
