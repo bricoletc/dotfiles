@@ -125,12 +125,16 @@ fi
 # Sets location to cambridgem and lowers faytime temperature (from 5500 to 5000K)
 alias rshift='redshift -l 52:0 -t 5000:3500'
 alias op='xdg-open'
+# git
 alias gis='git status'
 alias gil='git log --all --decorate --oneline --graph'
 alias gils='git log' #for 'simple'
 alias gib='git branch'
 alias gid='git diff'
 alias gic='git checkout'
+
+# use neovim
+alias vim=nvim
 
 alias gicane='git commit --amend --no-edit'
 #alias git=hub # Extend git with hub commands
@@ -266,7 +270,8 @@ ANALYSIS="/home/brice/Desktop/main_PhD/analyses"
 GITS="/home/brice/Desktop/main_PhD/git_repos"
 WKPLACE="/home/brice/Desktop/workplace"
 THESIS="/home/brice/Desktop/materials_PhD/writing/thesis/my_thesis_cam"
-LATEST_PRES="/home/brice/Desktop/material_PhD/presentations/PhD_day_year2/"
+PRES="/home/brice/Desktop/materials_PhD/my_presentations/"
+PAPER="/home/brice/Desktop/materials_PhD/writing/papers/"
 SNAKEFMT="/home/brice/Desktop/extra_curri_PhD/snakemake_formatting/snakefmt"
 COVID="/home/brice/Desktop/main_PhD/side_projects/covid_pca"
 

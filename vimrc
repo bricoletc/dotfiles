@@ -1,5 +1,6 @@
 "" vim-plug
-call plug#begin('~/.vim/plugged')
+"call plug#begin('~/.vim/plugged') " for vim, not neovim
+call plug#begin(stdpath('data') . '/plugged')
 
 """Code completion"""
 Plug 'Valloric/YouCompleteMe'
