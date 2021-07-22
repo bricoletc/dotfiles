@@ -132,12 +132,12 @@ alias gils='git log' #for 'simple'
 alias gib='git branch'
 alias gid='git diff'
 alias gic='git checkout'
+alias gicane='git commit --amend --no-edit'
+#alias git=hub # Extend git with hub commands
 
 # use neovim
 alias vim=nvim
 
-alias gicane='git commit --amend --no-edit'
-#alias git=hub # Extend git with hub commands
 
 ###########Credit : https://github.com/stephenturner/oneliners #############
 # Browse up and down
@@ -277,18 +277,17 @@ COVID="/home/brice/Desktop/main_PhD/side_projects/covid_pca"
 
 
 # >>> conda initialize >>>
-export PATH="$PATH:/home/brice/Softs/miniconda3/bin"
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/brice/Softs/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/brice/Softs/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/brice/Softs/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/brice/Softs/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# # <<< conda initialize <<<
+__conda_setup="$('/home/brice/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/brice/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/brice/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/brice/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 source "$HOME/.cargo/env"

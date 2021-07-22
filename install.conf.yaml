@@ -7,9 +7,11 @@
 
 - link:
     ~/.bashrc: bashrc
+    ~/.zshrc: zshrc
     ~/.gitconfing: gitconfig
     ~/.ssh/config: ssh.config
     ~/tmux.completion.bash: tmux.completion.bash
+    ~/.fzf.zsh: fzf.zsh
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim
     ~/.vimrc: vimrc
