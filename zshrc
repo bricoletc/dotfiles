@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(autojump git pyenv vi-mode tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -162,6 +162,7 @@ alias smbEBI='nautilus --no-desktop smb://pcserv.windows.ebi.ac.uk' # Also have 
 Softs="${HOME}/Softs"
 PATH=${Softs}:$PATH
 PATH=${Softs}/clion-2020.3.1/bin/:$PATH
+PATH=${Softs}/ansiweather/:$PATH
 PATH=${Softs}/pycharm-2020.1/bin/:$PATH
 PATH=${Softs}/bcftools/bin/:$PATH
 PATH=/usr/local/texlive/2018/bin/x86_64-linux/:$PATH
@@ -181,18 +182,10 @@ PATH=/home/brice/Desktop/git_repos/dev_venv/bin/keyring:$PATH
 PATH=/home/brice/Desktop/main_PhD/git_repos/iqbal-lab/martin_bioinf_scripts/python:$PATH
 PATH=/usr/local/pulse/:$PATH
 
-# pyenv
-export PATH="/home/brice/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 export PATH
 
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/pulse/extra/usr/lib/x86_64-linux-gnu/ # Fix: https://askubuntu.com/questions/1135065/cant-run-pulse-secure-on-ubuntu-19-04-because-libwebkitgtk-1-0-so-0-is-missing PulseUi PulseSecure VPN for Ubuntu > 18
 export LD_LIBRARY_PATH
-
-# bash vi mode. Escape first to get out of insert mode.
-set -o vi
 
 export GOPATH=${Softs}/go
 export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin

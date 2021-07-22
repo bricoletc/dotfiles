@@ -16,6 +16,7 @@
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: init.vim
+    ~/.ansiweatherrc: ansiweatherrc
 
 - create:
     - ~/.vim/undo-history
