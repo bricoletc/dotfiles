@@ -122,10 +122,18 @@ alias d='clear; cd -; ls -lhGgo'
 # git
 # see https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git for inspiration
 alias gis='git status'
-alias gil='git log --oneline --decorate'
+alias gil='git log --all --decorate --oneline --graph'
 alias gild='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'' --date=short'
 alias gils='git log --stat'
 alias gid='git diff'
+alias gic='git checkout'
+
+alias gicane='git commit --amend --no-edit'
+
+# ls
+alias l='ls'
+alias ll='ls -lhtr'
+alias la='ls -lhtra'
 
 # pyenv
 eval "$(pyenv init -)"
@@ -142,12 +150,26 @@ sdu(){
 	du -h -d $1 $2
 }
 
+############Credit : https://www.cyberciti.biz/faq/linux-unix-convert-hex-to-decimal-number/######
+h2d(){
+  echo "ibase=16; $@"|bc
+}
+d2h(){
+  echo "obase=16; $@"|bc
+}
+
+d2b(){ 
+	echo "obase=2; $@"|bc 
+}
+b2d(){
+	echo "ibase=2; $@"|bc 
+}
+##############################################################################
+
 ################## EBI -related #################
 
 ######## Cluster ########
 
-# Login
-CL_CODON="bletcher@codon_ext"
 # Covid VM
 CL_COVID="ubuntu@140.238.99.97"
 
@@ -162,10 +184,7 @@ yoda_tunnel_ssh(){
 	fi
 }
 
-# Mount yoda research dir
-alias myoda='sshfs bletcher@yoda:/nfs/leia/research/iqbal /mnt/yoda'
-alias myoda_ext='sshfs bletcher@yoda_ext:/ /mnt/yoda'
-alias mnoah_ext='sshfs bletcher@noah_ext:/ /mnt/noah'
+# Mount codon
 alias mcodon_ext='sshfs bletcher@codon_ext:/ /mnt/codon'
 
 
@@ -179,11 +198,10 @@ alias smbEBI='nautilus --no-desktop smb://pcserv.windows.ebi.ac.uk' # Also have 
 
 ## Paths
 Softs="${HOME}/Softs"
-PATH=${Softs}:$PATH
+PATH=${Softs}/bin/:$PATH
 PATH=${Softs}/clion-2020.3.1/bin/:$PATH
 PATH=${Softs}/ansiweather/:$PATH
 PATH=${Softs}/pycharm-2020.1/bin/:$PATH
-PATH=${Softs}/bcftools/bin/:$PATH
 PATH=/usr/local/texlive/2018/bin/x86_64-linux/:$PATH
 PATH=${Softs}/art_bin_MountRainier/:$PATH
 PATH=${Softs}/bwa/:$PATH
@@ -191,7 +209,6 @@ PATH=${Softs}/bowtie2-2.4.1-linux-x86_64/:$PATH
 PATH=${Softs}/vg/:$PATH
 PATH=${Softs}/vcflib/bin:$PATH
 PATH=${Softs}/artemis:${Softs}/seaview:$PATH
-PATH=${Softs}/cdhit:$PATH
 PATH=${Softs}/standard-RAxML/:$PATH
 PATH=${Softs}/minimap2-2.17_x64-linux/:$PATH
 PATH="${Softs}/singularity_3.5.0/builddir/":$PATH

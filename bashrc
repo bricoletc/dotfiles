@@ -168,15 +168,6 @@ b2d(){
 ##############################################################################
 
 
-# Switch local/remote ssh config
-confSwitch(){
-	if [ ~/.ssh/config -ef ~/.ssh/config_local ]; then
-		ln -sf ~/.ssh/config_remote ~/.ssh/config
-	else
-		ln -sf ~/.ssh/config_local ~/.ssh/config
-	fi
-}
-
 randomPwd(){
 	pwd=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c $1)
 	echo "${pwd}"
@@ -206,10 +197,7 @@ yoda_tunnel_ssh(){
 	fi
 }
 
-# Mount yoda research dir
-alias myoda='sshfs bletcher@yoda:/nfs/leia/research/iqbal /mnt/yoda'
-alias myoda_ext='sshfs bletcher@yoda_ext:/ /mnt/yoda'
-alias mnoah_ext='sshfs bletcher@noah_ext:/ /mnt/noah'
+# Mount codon
 alias mcodon_ext='sshfs bletcher@codon_ext:/ /mnt/codon'
 
 
