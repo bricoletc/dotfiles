@@ -30,9 +30,13 @@ Plug 'psf/black', {'branch': 'stable'}
 "Plug '/home/brice/Desktop/extra_curri_PhD/snakemake_formatting/snakefmt' 
 Plug 'bricoletc/snakefmt', {'branch': 'dev'} 
 
-" Plug 'vim-airline/vim-airline'
-" Plug 'roxma/nvim-yarp'
-" Plug 'roxma/vim-hug-neovim-rpc'
+
+"""Code snippets"""
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+"""Debugging"""
+Plug 'puremourning/vimspector'
 
 call plug#end()
 
@@ -62,6 +66,9 @@ autocmd BufWritePost .vimrc source $MYVIMRC
 inoremap jj <esc>
 let mapleader = "\<Space>"
 
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<c-g>"
+
 " fzf
 nmap // :BLines!<CR>
 nmap cc :Commands!<CR>
@@ -85,6 +92,7 @@ set expandtab
 set shiftwidth=4
 set number
 set ignorecase
+set smartcase " if search contains uppercase, search becomes case-sensitive. To search lowercase only, use `pattern\C`.
 set title
 
 " Place backup files in own directory; double slash avoids same file name ambiguity
@@ -108,7 +116,8 @@ set textwidth=88
 set colorcolumn=89
 
 " Quicker buffer movement
-nnoremap <leader>b :ls<CR>:b<Space>
+" nnoremap <leader>b :ls<CR>:b<Space>
+nnoremap <leader>b :Buffers<CR>
 
 " Quicker window movement and exit
 nnoremap <C-j> <C-w>j
