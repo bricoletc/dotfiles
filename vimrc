@@ -43,7 +43,7 @@ call plug#end()
 """"Brice's settings"""""""""""""""
 " Snakemake support
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
-au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'
+"au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'
 
 " ___code formatting___
 " __black__
@@ -67,7 +67,8 @@ inoremap jj <esc>
 let mapleader = "\<Space>"
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<c-g>"
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " fzf
 nmap // :BLines!<CR>
@@ -96,12 +97,13 @@ set smartcase " if search contains uppercase, search becomes case-sensitive. To 
 set title
 
 " Place backup files in own directory; double slash avoids same file name ambiguity
-:set backupdir=~/.vim/backup//,.,/tmp//
+:set backupdir=~/.vim/backup//,.
 
 """ YouCompleteMe
 " Remove the documentation popup by default, and add a mapping to trigger it
 let g:ycm_auto_hover = ""
-nmap <leader>d <plug>(YCMHover)
+"nmap <leader>d <plug>(YCMHover)
+nmap <leader>d :YcmCompleter GetDoc<CR>
 " Run the 'guessing' GoTo: go to declaration/definition, include file, ...
 nmap <leader>g :YcmCompleter GoTo<CR>
 " Error diagnostics go to `locationlist`: `:lopen`, `:lclose`
