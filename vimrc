@@ -71,8 +71,9 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " fzf
-nmap // :BLines!<CR>
-nmap cc :Commands!<CR>
+nmap // :History/<CR>
+nmap /L :BLines<CR>
+nmap /C :Commands<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1

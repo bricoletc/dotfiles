@@ -138,6 +138,9 @@ alias la='ls -lhtra'
 # pyenv
 eval "$(pyenv init -)"
 
+## Docker
+docker_rm_untagged='sudo docker rmi $(sudo docker images -f dangling=true -q)'
+
 
 ###### Functions ###########
 mcd(){ mkdir -p "$1" && cd "$1";}

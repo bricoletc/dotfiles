@@ -16,6 +16,7 @@
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: init.vim
+    ~/.config/redshift/redshift.conf: redshift.conf
     ~/.ansiweatherrc: ansiweatherrc
 
 - create:
