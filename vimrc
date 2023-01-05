@@ -104,7 +104,7 @@ set title
 " Remove the documentation popup by default, and add a mapping to trigger it
 let g:ycm_auto_hover = ""
 "nmap <leader>d <plug>(YCMHover)
-nmap <leader>d :YcmCompleter GetDoc<CR>
+nmap <leader>h :YcmCompleter GetDoc<CR>
 " Run the 'guessing' GoTo: go to declaration/definition, include file, ...
 nmap <leader>g :YcmCompleter GoTo<CR>
 " Error diagnostics go to `locationlist`: `:lopen`, `:lclose`
@@ -142,6 +142,20 @@ nnoremap <leader>f "%p
 
 " Open new window at jumplist target number x (eg for equivalent of Ctrl-W s 2 Ctrl-O, use 2<leader>j)
 nnoremap <leader>j :<C-u>execute 'split +normal\ ' . v:count . '<C-o>'<CR>
+
+" Vimspector shortcuts - credit https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m
+nnoremap <Leader>dd :call vimspector#Launch()<CR>
+nnoremap <Leader>de :call vimspector#Reset()<CR>
+nnoremap <Leader>dc :call vimspector#Continue()<CR>
+
+nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
+
+nmap <Leader>dk <Plug>VimspectorRestart
+nmap <Leader>dh <Plug>VimspectorStepOut
+nmap <Leader>dl <Plug>VimspectorStepInto
+nmap <Leader>dj <Plug>VimspectorStepOver
+
 
 """""""""""""""""""""""""""""""""""
 

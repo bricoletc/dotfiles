@@ -7,6 +7,8 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/home/brice/.local/bin/:$PATH
+DESKTOPS="/usr/share/applications"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/brice/.oh-my-zsh"
@@ -79,6 +81,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(vi-mode tmux zoxide)
 
+bindkey -M viins 'jj' vi-cmd-mode
+
 source $ZSH/oh-my-zsh.sh
 
 #### User configuration #####
@@ -90,10 +94,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
+
+# clipboard support for neovim
+export TMUX="tmux"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -136,7 +143,7 @@ alias ll='ls -lhtr'
 alias la='ls -lhtra'
 
 # pyenv
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
 
 ## Docker
 docker_rm_untagged='sudo docker rmi $(sudo docker images -f dangling=true -q)'
@@ -234,15 +241,15 @@ export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 source ~/tmux.completion.bash
 
 ## Convenience jumps
-GMTOOLS="/home/brice/Desktop/main_PhD/git_repos/gramtools"
-ANALYSIS="/home/brice/Desktop/main_PhD/analyses"
-GITS="/home/brice/Desktop/main_PhD/git_repos"
+GMTOOLS="/home/brice/Desktop/research/PhD/main_PhD/git_repos/gramtools"
+ANALYSIS="/home/brice/Desktop/research/PhD/main_PhD/analyses"
+GITS="/home/brice/Desktop/research/PhD/main_PhD/git_repos"
 WKPLACE="/home/brice/Desktop/workplace"
-THESIS="/home/brice/Desktop/materials_PhD/writing/thesis/my_thesis_cam"
-PRES="/home/brice/Desktop/materials_PhD/my_presentations/"
-PAPER="/home/brice/Desktop/materials_PhD/writing/papers/"
-SNAKEFMT="/home/brice/Desktop/extra_curri_PhD/snakemake_formatting/snakefmt"
-COVID="/home/brice/Desktop/main_PhD/side_projects/covid_pca"
+THESIS="/home/brice/Desktop/research/PhD/materials_PhD/writing/thesis/my_thesis_cam"
+PRES="/home/brice/Desktop/research/PhD/materials_PhD/my_presentations/"
+PAPER="/home/brice/Desktop/research/PhD/materials_PhD/writing/papers/"
+SNAKEFMT="/home/brice/Desktop/research/coding/snakemake_formatting/snakefmt"
+COVID="/home/brice/Desktop/research/PhD/main_PhD/side_projects/covid_pca"
 
 
 # >>> conda initialize >>>
@@ -259,7 +266,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-source "$HOME/.cargo/env"
+#source "$HOME/.cargo/env"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
