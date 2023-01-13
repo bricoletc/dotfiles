@@ -7,11 +7,11 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/home/brice/.local/bin/:$PATH
+export PATH=$HOME/.local/bin/:$PATH
 DESKTOPS="/usr/share/applications"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/brice/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -224,8 +224,8 @@ PATH=${Softs}/minimap2-2.17_x64-linux/:$PATH
 PATH="${Softs}/singularity_3.5.0/builddir/":$PATH
 PATH="${Softs}/enaBrowserTools/python3/":$PATH
 PATH=${HOME}/.poetry/bin:${PATH}
-PATH=/home/brice/Desktop/git_repos/dev_venv/bin/keyring:$PATH 
-PATH=/home/brice/Desktop/main_PhD/git_repos/iqbal-lab/martin_bioinf_scripts/python:$PATH
+PATH="${HOME}/Desktop/research/coding/git_repos/dev_venv/bin/keyring":$PATH 
+PATH="${HOME}/Desktop/research/coding/git_repos/iqbal-lab/martin_bioinf_scripts/python":$PATH
 PATH=/usr/local/pulse/:$PATH
 
 export PATH
@@ -241,15 +241,17 @@ export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 source ~/tmux.completion.bash
 
 ## Convenience jumps
-GMTOOLS="/home/brice/Desktop/research/PhD/main_PhD/git_repos/gramtools"
-ANALYSIS="/home/brice/Desktop/research/PhD/main_PhD/analyses"
-GITS="/home/brice/Desktop/research/PhD/main_PhD/git_repos"
-WKPLACE="/home/brice/Desktop/workplace"
-THESIS="/home/brice/Desktop/research/PhD/materials_PhD/writing/thesis/my_thesis_cam"
-PRES="/home/brice/Desktop/research/PhD/materials_PhD/my_presentations/"
-PAPER="/home/brice/Desktop/research/PhD/materials_PhD/writing/papers/"
-SNAKEFMT="/home/brice/Desktop/research/coding/snakemake_formatting/snakefmt"
-COVID="/home/brice/Desktop/research/PhD/main_PhD/side_projects/covid_pca"
+GITS="${HOME}/Desktop/research/coding/git_repos"
+GMTOOLS="${GITS}/gramtools"
+WKPLACE="${HOME}/Desktop/workplace"
+THESIS="${HOME}/Desktop/research/PhD/materials_PhD/writing/thesis/my_thesis_cam"
+PAPER="${HOME}/Desktop/research/PhD/materials_PhD/writing/papers/"
+SNAKEFMT="${HOME}/Desktop/research/coding/snakemake_formatting/snakefmt"
+#ANALYSIS="${HOME}/Desktop/research/PhD/main_PhD/analyses"
+#PRES="${HOME}/Desktop/research/PhD/materials_PhD/my_presentations/"
+ANALYSIS="${HOME}/Desktop/research/postdoc_delattre/main_postdoc/analyses"
+PRES="${HOME}/Desktop/research/postdoc_delattre/materials_postdoc/presentations/"
+TRACKER="${WKPLACE}/postdoc_tracker"
 
 
 # >>> conda initialize >>>
