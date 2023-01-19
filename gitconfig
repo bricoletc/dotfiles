@@ -6,10 +6,12 @@
 [core]
 	editor = nvim
 
-# force authentication to use SSH rather than HTTPS.
-# be aware this affects everything that tries to use git.
-# for example, vim (and other tools) will try to clone plugins using SSH.
-# notably, causes a rust cargo issue, solved below, from https://github.com/rust-lang/cargo/issues/3381
+# Below line, when cloning a https repo, will convert the remote link from https 
+# to git@github.com - i.e., to SSH.
+# However, this affects everything that tries to use git;
+# for example, vim (and other tools) will try to clone plugins using SSH, and
+# notably, causes a rust cargo issue. (solved below, from https://github.com/rust-lang/cargo/issues/3381)
+# So is disabled.
 #[url "git@github.com/"]
 #	insteadOf = https://github.com/
 
