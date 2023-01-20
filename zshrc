@@ -268,6 +268,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+# conda: create an env with name of the package to install inside it
+conda_new() { conda create -y --name "$1" && conda activate "$1" && conda install -y "$1";}
 #source "$HOME/.cargo/env"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
