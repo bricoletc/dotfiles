@@ -99,8 +99,6 @@ else
   export EDITOR='nvim'
 fi
 
-# clipboard support for neovim
-export TMUX="tmux"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -256,14 +254,14 @@ TRACKER="${WKPLACE}/postdoc_tracker"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/brice/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/adminbrice/Softs/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/brice/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/brice/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/adminbrice/Softs/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/adminbrice/Softs/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/brice/miniconda3/bin:$PATH"
+        export PATH="/home/adminbrice/Softs/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

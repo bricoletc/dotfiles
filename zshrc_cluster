@@ -99,9 +99,6 @@ else
   export EDITOR='nvim'
 fi
 
-# clipboard support for neovim
-export TMUX="tmux"
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
