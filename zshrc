@@ -174,9 +174,10 @@ b2d(){
 }
 ##############################################################################
 
-################## EBI -related #################
 
-######## Cluster ########
+################## Cluster ################
+
+######## EBI -related #########
 
 # Covid VM
 CL_COVID="ubuntu@140.238.99.97"
@@ -201,6 +202,18 @@ alias ligate_otp='oathtool --totp -b -d 6 YV32MLUIBBYW6FZ3YS2HFDVGZ6O2F56S'
 
 ## Samba file share
 alias smbEBI='nautilus --no-desktop smb://pcserv.windows.ebi.ac.uk' # Also have a personal folder by appending '/bletcher'
+
+######## ENS-related #########
+# Mount PSMN
+# sudo mkdir /mnt/psmn; sudo chown adminbrice:adminbrice /mnt/psmn
+alias mount_psmn='sshfs bletcher@psmn_compute:/scratch/Bio/bletcher/workflow_data/ /mnt/psmn'
+
+# Mount bioDATA
+# Two options: either use alias below, but can only interact with the mount as root
+alias mount_biodata='sudo mount -t cifs -o "username=bletcher" //dsi.ens-lyon.fr/biodata/celegans3 /media/adminbrice/delattre_smb'
+# Or paste this in /etc/fstab:
+# //dsi.ens-lyon.fr/biodata/celegans3 /media/adminbrice/delattre_smb cifs rw,user,noauto,username=bletcher,iocharset=utf8 0 0
+# And mount using `mount /media/adminbrice/delattre_smb`
 ##################################################
 
 
@@ -219,7 +232,7 @@ PATH=${Softs}/vcflib/bin:$PATH
 PATH=${Softs}/artemis:${Softs}/seaview:$PATH
 PATH=${Softs}/standard-RAxML/:$PATH
 PATH=${Softs}/minimap2-2.17_x64-linux/:$PATH
-PATH="${Softs}/singularity_3.5.0/builddir/":$PATH
+PATH="/home/adminbrice/Softs/go/src/github.com/sylabs/singularity/builddir":$PATH
 PATH="${Softs}/enaBrowserTools/python3/":$PATH
 PATH=${HOME}/.poetry/bin:${PATH}
 PATH="${HOME}/Desktop/research/coding/git_repos/dev_venv/bin/keyring":$PATH 
@@ -250,6 +263,10 @@ SNAKEFMT="${HOME}/Desktop/research/coding/snakemake_formatting/snakefmt"
 ANALYSIS="${HOME}/Desktop/research/postdoc_delattre/main_postdoc/analyses"
 PRES="${HOME}/Desktop/research/postdoc_delattre/materials_postdoc/presentations/"
 TRACKER="${WKPLACE}/postdoc_tracker"
+
+# For using : https://github.com/todotxt/todo.txt
+TODOs="${TRACKER}/TODOs"
+alias t="todo.sh"
 
 
 # >>> conda initialize >>>

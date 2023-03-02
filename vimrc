@@ -6,6 +6,9 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'Valloric/YouCompleteMe'
 " Plug 'Shougo/deoplete.nvim'
 
+""" Todos
+Plug 'freitass/todo.txt-vim'
+
 """Filesearch and filetree browsing"""
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -65,6 +68,7 @@ autocmd BufWritePost .vimrc source $MYVIMRC
 """ source: https://youtu.be/xf0yYLj4AJI
 inoremap jj <esc>
 let mapleader = "\<Space>"
+let maplocalleader = "_"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-e>"
