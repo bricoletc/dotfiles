@@ -153,17 +153,26 @@ source /usr/share/lmod/lmod/init/bash
 # PSMN Lake
 module use /applis/PSMN/debian11/Lake/modules/all
 # LBMC Hub-specific
-module use Xnfs/lbmcdb/common/modules/modulefiles
+module use /Xnfs/lbmcdb/common/modules/modulefiles
 
-COMP="/scratch/Bio/bletcher/"
-ANALYSIS="/Xnfs/lbmcdb/Delattre_team/"
+## Convenience jumps
+UNAME="bletcher"
+SCRATCH="/scratch/Bio/$UNAME/"
+ANALYSIS="/Xnfs/lbmcdb/Delattre_team/$UNAME"
 # Contains nexflow and charliecloud binaries, and singu and charliecloud images
 HUB_ABC="/Xnfs/abc"
 HUB_COMMON="/Xnfs/lbmcdb/common"
+HUB_CC="${HUB_ABC}/charliecloud"
 
 PATH="${HUB_ABC}/charliecloud_bin/:$PATH"
+
 # They have a conda, but it's old - see self-managed minoconda below
 # PATH="${HUB_COMMON}/conda/condabin/:$PATH"
+
+# tmpdir
+export TMP="${SCRATCH}/tmp"
+export TEMP="${SCRATCH}/tmp"
+export TMPDIR="${SCRATCH}/tmp"
 
 
 ###### Functions ###########
@@ -225,17 +234,8 @@ export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 source ~/tmux.completion.bash
 
 ## Convenience jumps
-GITS="${HOME}/Desktop/research/coding/git_repos"
-GMTOOLS="${GITS}/gramtools"
-WKPLACE="${HOME}/Desktop/workplace"
-THESIS="${HOME}/Desktop/research/PhD/materials_PhD/writing/thesis/my_thesis_cam"
-PAPER="${HOME}/Desktop/research/PhD/materials_PhD/writing/papers/"
-SNAKEFMT="${HOME}/Desktop/research/coding/snakemake_formatting/snakefmt"
-#ANALYSIS="${HOME}/Desktop/research/PhD/main_PhD/analyses"
-#PRES="${HOME}/Desktop/research/PhD/materials_PhD/my_presentations/"
-ANALYSIS="${HOME}/Desktop/research/postdoc_delattre/main_postdoc/analyses"
-PRES="${HOME}/Desktop/research/postdoc_delattre/materials_postdoc/presentations/"
-TRACKER="${WKPLACE}/postdoc_tracker"
+## WKPLACE="${HOME}/Desktop/workplace"
+## TRACKER="${WKPLACE}/postdoc_tracker"
 
 
 # >>> conda initialize >>>
