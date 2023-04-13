@@ -69,6 +69,7 @@ autocmd BufWritePost .vimrc source $MYVIMRC
 inoremap jj <esc>
 let mapleader = "\<Space>"
 let maplocalleader = "_"
+let g:todo_done_filename = 'done.txt'
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-e>"

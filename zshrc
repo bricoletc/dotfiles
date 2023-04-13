@@ -206,7 +206,8 @@ alias smbEBI='nautilus --no-desktop smb://pcserv.windows.ebi.ac.uk' # Also have 
 ######## ENS-related #########
 # Mount PSMN
 # sudo mkdir /mnt/psmn; sudo chown adminbrice:adminbrice /mnt/psmn
-alias mount_psmn='sshfs bletcher@psmn_compute:/scratch/Bio/bletcher/workflow_data/ /mnt/psmn'
+alias mount_psmn='sshfs bletcher@psmn_compute:/Xnfs/lbmcdb/Delattre_team/bletcher/ /mnt/psmn'
+alias mount_psmn_scratch='sshfs bletcher@psmn_compute:/scratch/Bio/bletcher/workflow_data/ /mnt/psmn'
 
 # Mount bioDATA
 # Two options: either use alias below, but can only interact with the mount as root
@@ -228,10 +229,10 @@ PATH=${Softs}/art_bin_MountRainier/:$PATH
 PATH=${Softs}/bwa/:$PATH
 PATH=${Softs}/bowtie2-2.4.1-linux-x86_64/:$PATH
 PATH=${Softs}/vg/:$PATH
+PATH=${Softs}/node_linux/bin/:$PATH
 PATH=${Softs}/vcflib/bin:$PATH
 PATH=${Softs}/artemis:${Softs}/seaview:$PATH
 PATH=${Softs}/standard-RAxML/:$PATH
-PATH=${Softs}/minimap2-2.17_x64-linux/:$PATH
 PATH="/home/adminbrice/Softs/go/src/github.com/sylabs/singularity/builddir":$PATH
 PATH="${Softs}/enaBrowserTools/python3/":$PATH
 PATH=${HOME}/.poetry/bin:${PATH}
