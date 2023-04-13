@@ -149,6 +149,7 @@ docker_rm_untagged='sudo docker rmi $(sudo docker images -f dangling=true -q)'
 ###################
 ## Cluster: PSMN ##
 ###################
+export LC_ALL=C
 source /usr/share/lmod/lmod/init/bash
 # PSMN Lake
 module use /applis/PSMN/debian11/Lake/modules/all
