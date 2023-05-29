@@ -19,3 +19,5 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[safe]
+	directory = /media/adminbrice/delattre_smb/sequencing_metadata

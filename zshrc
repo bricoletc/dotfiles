@@ -140,6 +140,23 @@ alias l='ls'
 alias ll='ls -lhtr'
 alias la='ls -lhtra'
 
+# Command re-use. I always forget how to do it, this is a guide (from here https://stackoverflow.com/a/32332694/12519542)
+alias reuse='cat <<EOF 
+!^      first argument
+!$      last argument
+!*      all arguments
+!:2     second argument
+
+!:2-3   second to third arguments
+!:2-$   second to last arguments
+!:2*    second to last arguments
+!:2-    second to next to last arguments
+
+!:0     the command
+!!      repeat the previous line
+EOF
+'
+
 # pyenv
 #eval "$(pyenv init -)"
 
@@ -211,7 +228,7 @@ alias mount_psmn_scratch='sshfs bletcher@psmn_compute:/scratch/Bio/bletcher/work
 
 # Mount bioDATA
 # Two options: either use alias below, but can only interact with the mount as root
-alias mount_biodata='sudo mount -t cifs -o "username=bletcher" //dsi.ens-lyon.fr/biodata/celegans3 /media/adminbrice/delattre_smb'
+alias mount_biodata='sudo mount -t cifs -o "username=bletcher,uid=1001,gid=1001" //dsi.ens-lyon.fr/biodata/celegans3 /media/adminbrice/delattre_smb'
 # Or paste this in /etc/fstab:
 # //dsi.ens-lyon.fr/biodata/celegans3 /media/adminbrice/delattre_smb cifs rw,user,noauto,username=bletcher,iocharset=utf8 0 0
 # And mount using `mount /media/adminbrice/delattre_smb`
@@ -233,7 +250,7 @@ PATH=${Softs}/node_linux/bin/:$PATH
 PATH=${Softs}/vcflib/bin:$PATH
 PATH=${Softs}/artemis:${Softs}/seaview:$PATH
 PATH=${Softs}/standard-RAxML/:$PATH
-PATH="/home/adminbrice/Softs/go/src/github.com/sylabs/singularity/builddir":$PATH
+PATH="/home/adminbrice/Softs/go/src/github.com/sylabs/singularity/bin":$PATH
 PATH="${Softs}/enaBrowserTools/python3/":$PATH
 PATH=${HOME}/.poetry/bin:${PATH}
 PATH="${HOME}/Desktop/research/coding/git_repos/dev_venv/bin/keyring":$PATH 
