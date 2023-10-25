@@ -149,7 +149,7 @@ docker_rm_untagged='sudo docker rmi $(sudo docker images -f dangling=true -q)'
 ###################
 ## Cluster: PSMN ##
 ###################
-export LC_ALL=C
+export LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8
 source /usr/share/lmod/lmod/init/bash
 # PSMN Lake
 module use /applis/PSMN/debian11/Lake/modules/all
@@ -241,20 +241,24 @@ source ~/tmux.completion.bash
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/bletcher/Softs/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/bletcher/Softs/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/bletcher/Softs/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/bletcher/Softs/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/bletcher/Softs/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/bletcher/Softs/miniforge3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/bletcher/Softs/miniconda3/bin:$PATH"
+        export PATH="/home/bletcher/Softs/miniforge3/bin:$PATH"
     fi
 fi
 unset __conda_setup
+
+if [ -f "/home/bletcher/Softs/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/bletcher/Softs/miniforge3/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
 # conda: create an env with name of the package to install inside it
-conda_new() { conda create -y --name "$1" && conda activate "$1" && conda install -y "$1";}
+conda_new() { mamba create -y --name "$1" && mamba activate "$1" && mamba install -y "$1";}
 #source "$HOME/.cargo/env"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
