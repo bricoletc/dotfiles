@@ -228,7 +228,8 @@ alias mount_psmn_scratch='sshfs bletcher@psmn_compute:/scratch/Bio/bletcher/work
 
 # Mount bioDATA
 # Two options: either use alias below, but can only interact with the mount as root
-alias mount_biodata='sudo mount -t cifs -o "username=bletcher,uid=1001,gid=1001" //dsi.ens-lyon.fr/biodata/celegans3 /media/adminbrice/delattre_smb'
+alias mount_biodata='sudo mount -t cifs -o "username=bletcher,uid=1001,gid=1001" //dsi.ens-lyon.fr/biodata/celegans /media/adminbrice/delattre_smb_elegans'
+alias mount_biodata3='sudo mount -t cifs -o "username=bletcher,uid=1001,gid=1001" //dsi.ens-lyon.fr/biodata/celegans3 /media/adminbrice/delattre_smb_elegans3'
 # Or paste this in /etc/fstab:
 # //dsi.ens-lyon.fr/biodata/celegans3 /media/adminbrice/delattre_smb cifs rw,user,noauto,username=bletcher,iocharset=utf8 0 0
 # And mount using `mount /media/adminbrice/delattre_smb`
@@ -289,20 +290,24 @@ alias t="todo.sh"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/adminbrice/Softs/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/adminbrice/Softs/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/adminbrice/Softs/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/adminbrice/Softs/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/adminbrice/Softs/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/adminbrice/Softs/miniforge3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/adminbrice/Softs/miniconda3/bin:$PATH"
+        export PATH="/home/adminbrice/Softs/miniforge3/bin:$PATH"
     fi
 fi
 unset __conda_setup
+
+if [ -f "/home/adminbrice/Softs/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/adminbrice/Softs/miniforge3/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
 # conda: create an env with name of the package to install inside it
-conda_new() { conda create -y --name "$1" && conda activate "$1" && conda install -y "$1";}
+conda_new() { mamba create -y --name "$1" && mamba activate "$1" && mamba install -y "$1";}
 #source "$HOME/.cargo/env"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
