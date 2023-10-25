@@ -120,7 +120,7 @@ nmap <leader>r :YcmCompleter GoToReferences<CR>
 
 """ Source: https://github.com/thoughtbot/dotfiles/blob/master/vimrc
 " Make it obvious where 80 characters is
-set textwidth=88
+" set textwidth=88
 set colorcolumn=89
 
 " Quicker buffer movement
