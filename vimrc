@@ -1,5 +1,6 @@
 "" vim-plug
 "call plug#begin('~/.vim/plugged') " for vim, not neovim
+"to get path of neovim plugs: :echo stdpath('data')
 call plug#begin(stdpath('data') . '/plugged')
 
 """Code completion"""
@@ -20,6 +21,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
+
+"""TSVs"""
+Plug 'mechatroner/rainbow_csv'
 
 """Linting"""
 " Plug 'w0rp/ale'
@@ -121,7 +125,7 @@ nmap <leader>r :YcmCompleter GoToReferences<CR>
 """ Source: https://github.com/thoughtbot/dotfiles/blob/master/vimrc
 " Make it obvious where 80 characters is
 " set textwidth=88
-set colorcolumn=89
+"set colorcolumn=89
 
 " Quicker buffer movement
 " nnoremap <leader>b :ls<CR>:b<Space>

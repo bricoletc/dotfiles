@@ -224,7 +224,8 @@ alias smbEBI='nautilus --no-desktop smb://pcserv.windows.ebi.ac.uk' # Also have 
 # Mount PSMN
 # sudo mkdir /mnt/psmn; sudo chown adminbrice:adminbrice /mnt/psmn
 alias mount_psmn='sshfs bletcher@psmn_compute:/Xnfs/lbmcdb/Delattre_team/bletcher/ /mnt/psmn'
-alias mount_psmn_scratch='sshfs bletcher@psmn_compute:/scratch/Bio/bletcher/workflow_data/ /mnt/psmn'
+alias mount_psmn_hub='sshfs bletcher@psmn_compute:/Xnfs/lbmcdb/common/ /mnt/psmn'
+alias mount_psmn_scratch='sshfs bletcher@psmn_compute:/Xnfs/abc/nf_scratch/bletcher/ /mnt/psmn'
 
 # Mount bioDATA
 # Two options: either use alias below, but can only interact with the mount as root
