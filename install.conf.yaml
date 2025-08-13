@@ -13,9 +13,11 @@
     ~/tmux.completion.bash: tmux.completion.bash
     ~/.fzf.zsh: fzf.zsh
     ~/.tmux.conf: tmux.conf
-    ~/.vim: vim
     ~/.vimrc: vimrc
-    ~/.config/nvim/init.vim: init.vim
+    # ~/.config/nvim/init.vim: init.vim
+    ~/.config/nvim/init.lua: init.lua
+    ~/.config/nvim/lua/user/telescope.lua: telescope.lua
+    ~/.config/nvim/lua/user/explorer.lua: explorer.lua
     ~/.config/redshift/redshift.conf: redshift.conf
     ~/.ansiweatherrc: ansiweatherrc
     ~/.ipython/profile_default/ipython_config.py: ipython_config.py
