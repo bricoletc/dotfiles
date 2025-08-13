@@ -48,6 +48,7 @@ vim.keymap.set({'i'}, 'jj' ,'<esc>', {desc = 'Finger-quick exit from insert mode
 vim.keymap.set({'n', 'x'}, 'gy', '"+y', {desc = 'Copy to clipboard'})
 vim.keymap.set({'n', 'x'}, 'gp', '"+p', {desc = 'Paste clipboard content'})
 
+vim.keymap.set({'n'}, '<C-q>', '<C-w>q', {desc = "Close window"})
 vim.keymap.set({'n'}, '<C-j>', '<C-w>j', {desc = "Go to window down"})
 vim.keymap.set({'n'}, '<C-k>', '<C-w>k', {desc = "Go to window up"})
 vim.keymap.set({'n'}, '<C-l>', '<C-w>l', {desc = "Go to window right"})
@@ -63,51 +64,56 @@ vim.keymap.set({'n'}, '<Leader>v', '<cmd>:edit $MYVIMRC<cr>', {desc = 'Fast acce
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = {
-    -- Essential plugins
-    "nvim-lua/plenary.nvim", -- Utility functions (dependency for many plugins)
+    spec = {
+        -- Essential plugins
+        "nvim-lua/plenary.nvim", -- Utility functions (dependency for many plugins)
 
-    -- Treesitter for syntax highlighting (load early)
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        priority = 100, -- Load early
-    },
-    {
-        "neovim/nvim-lspconfig", -- Base LSP configurations
-        dependencies = {
-            -- Server installation manager
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+        -- TSVs
+        {
+            "mechatroner/rainbow_csv",
         },
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-            "hrsh7th/cmp-buffer",   -- Buffer source
-            "hrsh7th/cmp-path",     -- Path source
-            "L3MON4D3/LuaSnip",     -- Snippet engine
-            "saadparwaiz1/cmp_luasnip", -- Snippet source
+        -- Treesitter for syntax highlighting (load early)
+        {
+            "nvim-treesitter/nvim-treesitter",
+            build = ":TSUpdate",
+            priority = 100, -- Load early
         },
+        {
+            "neovim/nvim-lspconfig", -- Base LSP configurations
+            dependencies = {
+                -- Server installation manager
+                "williamboman/mason.nvim",
+                "williamboman/mason-lspconfig.nvim",
+            },
+        },
+        {
+            "hrsh7th/nvim-cmp",
+            dependencies = {
+                "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+                "hrsh7th/cmp-buffer",   -- Buffer source
+                "hrsh7th/cmp-path",     -- Path source
+                "L3MON4D3/LuaSnip",     -- Snippet engine
+                "saadparwaiz1/cmp_luasnip", -- Snippet source
+            },
+        },
+        -- File explorer
+        {
+            "nvim-tree/nvim-tree.lua",
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+        },
+
+        -- Fuzzy finder
+        {
+            "nvim-telescope/telescope.nvim",
+            dependencies = { "nvim-lua/plenary.nvim" }
+        },
+
+        -- Key binding helper
+        {
+            "folke/which-key.nvim",
+        },
+
     },
-      -- File explorer
-      {
-          "nvim-tree/nvim-tree.lua",
-          dependencies = { "nvim-tree/nvim-web-devicons" },
-      },
-
-      -- Fuzzy finder
-      {
-          "nvim-telescope/telescope.nvim",
-          dependencies = { "nvim-lua/plenary.nvim" }
-      },
-
-      -- Key binding helper
-      {
-          "folke/which-key.nvim",
-      },
-  },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
@@ -115,5 +121,6 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
+require('user.treesitter')
 require('user.explorer')
 require('user.telescope')
