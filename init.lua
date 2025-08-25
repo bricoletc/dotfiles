@@ -58,7 +58,7 @@ vim.keymap.set({'n'}, '11', '1gt', {desc = "Go to tab 1"})
 vim.keymap.set({'n'}, '22', '2gt', {desc = "Go to tab 2"})
 vim.keymap.set({'n'}, '33', '2gt', {desc = "Go to tab 3"})
 
-vim.keymap.set({'n'}, '<Leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', {desc = 'Substitute word under cursor'})
+-- vim.keymap.set({'n'}, '<Leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', {desc = 'Substitute word under cursor'})
 
 vim.keymap.set({'n'}, '<Leader>v', '<cmd>:edit $MYVIMRC<cr>', {desc = 'Fast access to config'})
 
@@ -78,12 +78,13 @@ require("lazy").setup({
             build = ":TSUpdate",
             priority = 100, -- Load early
         },
+        -- Language Server Protocol
         {
-            "neovim/nvim-lspconfig", -- Base LSP configurations
+            "mason-org/mason-lspconfig.nvim",
+            opts = {},
             dependencies = {
-                -- Server installation manager
-                "williamboman/mason.nvim",
-                "williamboman/mason-lspconfig.nvim",
+                { "mason-org/mason.nvim", opts = {} },
+                "neovim/nvim-lspconfig",
             },
         },
         {
@@ -122,5 +123,6 @@ require("lazy").setup({
 })
 
 require('user.treesitter')
+require('user.lsp')
 require('user.explorer')
 require('user.telescope')
