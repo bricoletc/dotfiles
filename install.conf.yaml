@@ -20,6 +20,7 @@
     ~/.config/nvim/lua/user/explorer.lua: explorer.lua
     ~/.config/nvim/lua/user/treesitter.lua: treesitter.lua
     ~/.config/nvim/lua/user/lsp.lua: lsp.lua
+    ~/.config/nvim/lua/user/completion.lua: completion.lua
     ~/.config/redshift/redshift.conf: redshift.conf
     ~/.ansiweatherrc: ansiweatherrc
     ~/.ipython/profile_default/ipython_config.py: ipython_config.py
