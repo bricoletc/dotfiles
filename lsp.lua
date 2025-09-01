@@ -5,7 +5,7 @@ require("mason-lspconfig").setup({
     "lua_ls",      -- Lua
     "pyright",     -- Python
     "rust_analyzer", -- Rust
-    "gopls",       -- Go
+    -- "gopls",       -- Go
     "clangd",      -- C/C++
   },
   automatic_installation = true,
@@ -17,6 +17,6 @@ vim.keymap.set('n', '<leader>d', vim.lsp.buf.declaration, { desc = "Go to declar
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc = "Hover" })
 vim.keymap.set('n', '<leader>r', vim.lsp.buf.references, { desc = "Get references" } )
 vim.keymap.set('n', '<leader>s', vim.lsp.buf.rename, { desc = "Symbol rename" } )
-vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, { desc = "Format buffer" } )
+-- vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, { desc = "Format buffer" } )
 -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation" } )
 -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)

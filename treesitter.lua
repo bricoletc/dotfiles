@@ -1,8 +1,9 @@
 require('nvim-treesitter.configs').setup {
   -- Install these parsers by default
-  ensure_installed = { 
-    "lua", "vim", "vimdoc", "python", "r", 
-    "go", "html", "css", "json", "yaml", "toml", "markdown", "bash" 
+  ensure_installed = {
+    "lua", "vim", "vimdoc", "python", "r",
+    "go", "html", "css", "json", "yaml", "toml", "markdown", "bash",
+    "groovy"
   },
   auto_install = true, -- Automatically install missing parsers
   highlight = {

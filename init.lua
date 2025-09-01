@@ -43,6 +43,12 @@ vim.o.termguicolors = true -- Enable 24-bit RGB colors
 
 vim.keymap.set({'i'}, 'jj' ,'<esc>', {desc = 'Finger-quick exit from insert mode'})
 
+vim.filetype.add({
+  extension = {
+        nf = 'groovy'
+  },
+})
+
 -- vim.keymap.set({'n'}, '<Leader>b' ,'<cmd>:buffers<cr>', {desc = 'Open the buffers'})
 
 vim.keymap.set({'n', 'x'}, 'gy', '"+y', {desc = 'Copy to clipboard'})
