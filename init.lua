@@ -33,7 +33,9 @@ vim.o.tabstop = 4 -- Number of spaces a tab represents
 vim.o.shiftwidth = 4 -- Number of spaces for each indentation
 vim.o.expandtab = true -- Convert tabs to spaces
 vim.o.smartindent = true -- Automatically indent new lines
-vim.o.wrap = false -- Disable line wrapping
+vim.o.wrap = true -- Disable line wrapping
+
+vim.o.undofile = true -- Persistent undo trees
 
 vim.o.ignorecase = true
 vim.o.smartcase = true --if search contains uppercase, search becomes case-sensitive. To search lowercase only, use `pattern\C`.
@@ -121,11 +123,14 @@ require("lazy").setup({
         },
 
     },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+    -- Configure any other settings here. See the documentation for more details.
+    -- colorscheme that will be used when installing plugins.
+    install = { colorscheme = { "habamax" } },
+    -- automatically check for plugin updates
+    checker = { 
+        enabled = true,
+        notify = false,
+    },
 })
 
 require('user.treesitter')

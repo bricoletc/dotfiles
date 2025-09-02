@@ -9,11 +9,13 @@ require("mason-lspconfig").setup({
     "clangd",      -- C/C++
   },
   automatic_installation = true,
-
+  -- automatic_enable = false,
 })
 
+
 -- Key mappings
-vim.keymap.set('n', '<leader>d', vim.lsp.buf.declaration, { desc = "Go to declaration" } )
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Get floating diagnostic" } )
+vim.keymap.set('n', '<leader>g', vim.lsp.buf.definition, { desc = "Go to definition"} )
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc = "Hover" })
 vim.keymap.set('n', '<leader>r', vim.lsp.buf.references, { desc = "Get references" } )
 vim.keymap.set('n', '<leader>s', vim.lsp.buf.rename, { desc = "Symbol rename" } )
