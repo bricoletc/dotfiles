@@ -158,7 +158,10 @@ module use /Xnfs/lbmcdb/common/modules/modulefiles
 
 ## Convenience jumps
 UNAME="bletcher"
-SCRATCH="/scratch/Bio/$UNAME/"
+SCRATCH="/Xnfs/abc/nf_scratch/$UNAME/"
+NF_RUNDIR="/Xnfs/abc/nf_scratch/$UNAME/nextflow_run_dir"
+SCRATCH_OLD="/scratch/Bio/$UNAME/"
+COMMON_DATA_DIR="/Xnfs/lbmcdb/common/sequence_databases"
 ANALYSIS="/Xnfs/lbmcdb/Delattre_team/$UNAME"
 # Contains nexflow and charliecloud binaries, and singu and charliecloud images
 HUB_ABC="/Xnfs/abc"
@@ -166,6 +169,9 @@ HUB_COMMON="/Xnfs/lbmcdb/common"
 HUB_CC="${HUB_ABC}/charliecloud"
 
 PATH="${HUB_ABC}/charliecloud_bin/:$PATH"
+
+# Slurm convenience
+alias slurm_nodes='sinfo --Node --long'
 
 # They have a conda, but it's old - see self-managed minoconda below
 # PATH="${HUB_COMMON}/conda/condabin/:$PATH"
@@ -252,10 +258,6 @@ else
     fi
 fi
 unset __conda_setup
-
-if [ -f "/home/bletcher/Softs/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/bletcher/Softs/miniforge3/etc/profile.d/mamba.sh"
-fi
 # <<< conda initialize <<<
 # conda: create an env with name of the package to install inside it
 conda_new() { mamba create -y --name "$1" && mamba activate "$1" && mamba install -y "$1";}
@@ -263,3 +265,20 @@ conda_new() { mamba create -y --name "$1" && mamba activate "$1" && mamba instal
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/home/bletcher/Softs/miniforge3/bin/mamba';
+export MAMBA_ROOT_PREFIX='/home/bletcher/Softs/miniforge3';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
