@@ -11,7 +11,7 @@ require('nvim-treesitter.configs').setup {
     disable = { "tsv", "csv", "psv"},
     additional_vim_regex_highlighting = false,
   },
-  indent = { enable = true },
+  indent = { enable = false },
   incremental_selection = {
     enable = true,
     keymaps = {
