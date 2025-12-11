@@ -16,11 +16,11 @@
     ~/.vimrc: vimrc
     # ~/.config/nvim/init.vim: init.vim
     ~/.config/nvim/init.lua: init.lua
-    ~/.config/nvim/lua/user/telescope.lua: telescope.lua
-    ~/.config/nvim/lua/user/explorer.lua: explorer.lua
-    ~/.config/nvim/lua/user/treesitter.lua: treesitter.lua
-    ~/.config/nvim/lua/user/lsp.lua: lsp.lua
-    ~/.config/nvim/lua/user/completion.lua: completion.lua
+    ~/.config/nvim/lua/plugins/telescope.lua: telescope.lua
+    ~/.config/nvim/lua/plugins/explorer.lua: explorer.lua
+    ~/.config/nvim/lua/plugins/treesitter.lua: treesitter.lua
+    ~/.config/nvim/lua/plugins/lsp.lua: lsp.lua
+    ~/.config/nvim/lua/plugins/completion.lua: completion.lua
     ~/.config/redshift/redshift.conf: redshift.conf
     ~/.ansiweatherrc: ansiweatherrc
     ~/.ipython/profile_default/ipython_config.py: ipython_config.py

@@ -74,54 +74,29 @@ vim.keymap.set({'n'}, '<Leader>v', '<cmd>:edit $MYVIMRC<cr>', {desc = 'Fast acce
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
-        -- Essential plugins
-        "nvim-lua/plenary.nvim", -- Utility functions (dependency for many plugins)
-
+        -- Utility functions (dependency for many plugins)
+        {"nvim-lua/plenary.nvim"}, 
         -- TSVs
-        {
-            "mechatroner/rainbow_csv",
-        },
-        -- Treesitter for syntax highlighting (load early)
-        {
-            "nvim-treesitter/nvim-treesitter",
-            build = ":TSUpdate",
-            priority = 100, -- Load early
-        },
-        -- Language Server Protocol
-        {
-            "mason-org/mason-lspconfig.nvim",
-            opts = {},
-            dependencies = {
-                { "mason-org/mason.nvim", opts = {} },
-                "neovim/nvim-lspconfig",
-            },
-        },
-        {
-            "hrsh7th/nvim-cmp",
-            dependencies = {
-                "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-                "hrsh7th/cmp-buffer",   -- Buffer source
-                "hrsh7th/cmp-path",     -- Path source
-                -- "L3MON4D3/LuaSnip",     -- Snippet engine
-                -- "saadparwaiz1/cmp_luasnip", -- Snippet source
-            },
-        },
-        -- File explorer
-        {
-            "nvim-tree/nvim-tree.lua",
-            dependencies = { "nvim-tree/nvim-web-devicons" },
-        },
-
-        -- Fuzzy finder
-        {
-            "nvim-telescope/telescope.nvim",
-            dependencies = { "nvim-lua/plenary.nvim" }
-        },
-
+        {"mechatroner/rainbow_csv"},
         -- Key binding helper
+        {"folke/which-key.nvim"},
+        -- Git Blame
         {
-            "folke/which-key.nvim",
+            "FabijanZulj/blame.nvim",
+            config = function()
+              require('blame').setup {}
+            end,
         },
+        -- File Explorer/Tree --
+        {import = "plugins.explorer"},
+        -- Syntax Highlighting --
+        {import = "plugins.treesitter"},
+        --- Fuzzy Finder --
+        {import = "plugins.telescope"},
+        -- LSP servers --
+        {import = "plugins.lsp"},
+        --- Code completion --
+        {import = "plugins.completion"},
 
     },
     -- Configure any other settings here. See the documentation for more details.
@@ -134,8 +109,23 @@ require("lazy").setup({
     },
 })
 
-require('user.treesitter')
-require('user.lsp')
-require('user.completion')
-require('user.explorer')
-require('user.telescope')
+vim.keymap.set('n', '<Leader>m' ,'<cmd>:BlameToggle<cr>', {desc = 'Toggle Git Blaming'})
+vim.keymap.set('n', '<leader>n',  '<cmd>NvimTreeToggle<CR>', { desc = "Toggle file explorer" })
+vim.keymap.set('n', '<leader>nf', '<cmd>NvimTreeFocus<CR>',  { desc = "Focus file explorer" })
+
+local builtin_ok, builtin = pcall(require, 'telescope.builtin')
+if builtin_ok then
+  vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = "Buffers" })
+  vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+  vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Live grep" })
+  vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
+end
+
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Get floating diagnostic" })
+vim.keymap.set('n', '<leader>g', vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover" })
+vim.keymap.set('n', '<leader>r', vim.lsp.buf.references, { desc = "Get references" })
+vim.keymap.set('n', '<leader>s', vim.lsp.buf.rename, { desc = "Symbol rename" })
+vim.keymap.set('n', '<leader>l', function() vim.lsp.buf.format { async = true } end, { desc = "Format buffer" })
+-- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation" } )
+-- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
