@@ -13,6 +13,8 @@ DESKTOPS="/usr/share/applications"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+zstyle ':omz:update' mode disabled
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -227,6 +229,10 @@ alias mount_psmn='sshfs bletcher@psmn_compute:/Xnfs/lbmcdb/Delattre_team/bletche
 alias mount_psmn_hub='sshfs bletcher@psmn_compute:/Xnfs/lbmcdb/common/ /mnt/psmn'
 alias mount_psmn_scratch='sshfs bletcher@psmn_compute:/Xnfs/abc/nf_scratch/bletcher/ /mnt/psmn'
 
+# Mount PSMN
+# sudo mkdir /mnt/cbp; sudo chown adminbrice:adminbrice /mnt/cbp
+alias mount_cbp='sshfs bletcher@damm-7960-ptds2.cbp.ens-lyon.fr:/home/bletcher /mnt/cbp'
+
 # Mount bioDATA
 # Two options: either use alias below, but can only interact with the mount as root
 alias mount_biodata='sudo mount -t cifs -o "username=bletcher,uid=1001,gid=1001" //dsi.ens-lyon.fr/biodata/celegans /media/adminbrice/delattre_smb_elegans'
@@ -302,10 +308,6 @@ else
     fi
 fi
 unset __conda_setup
-
-if [ -f "/home/adminbrice/Softs/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/adminbrice/Softs/miniforge3/etc/profile.d/mamba.sh"
-fi
 # <<< conda initialize <<<
 # conda: create an env with name of the package to install inside it
 conda_new() { mamba create -y --name "$1" && mamba activate "$1" && mamba install -y "$1";}
@@ -313,3 +315,16 @@ conda_new() { mamba create -y --name "$1" && mamba activate "$1" && mamba instal
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/home/adminbrice/Softs/miniforge3/bin/mamba';
+export MAMBA_ROOT_PREFIX='/home/adminbrice/Softs/miniforge3';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
