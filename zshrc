@@ -216,9 +216,6 @@ yoda_tunnel_ssh(){
 alias mcodon_ext='sshfs bletcher@codon_ext:/ /mnt/codon'
 
 
-# generate OTP for connecting to ligate. The TOTP token is TOTP12901CC5
-alias ligate_otp='oathtool --totp -b -d 6 YV32MLUIBBYW6FZ3YS2HFDVGZ6O2F56S'
-
 ## Samba file share
 alias smbEBI='nautilus --no-desktop smb://pcserv.windows.ebi.ac.uk' # Also have a personal folder by appending '/bletcher'
 
@@ -286,8 +283,8 @@ PAPER="${HOME}/Desktop/research/PhD/materials_PhD/writing/papers/"
 SNAKEFMT="${HOME}/Desktop/research/coding/snakemake_formatting/snakefmt"
 #ANALYSIS="${HOME}/Desktop/research/PhD/main_PhD/analyses"
 #PRES="${HOME}/Desktop/research/PhD/materials_PhD/my_presentations/"
-ANALYSIS="${HOME}/Desktop/research/postdoc_delattre/main_postdoc/analyses"
-PRES="${HOME}/Desktop/research/postdoc_delattre/materials_postdoc/presentations/"
+ANALYSIS="${HOME}/Desktop/research/postdoc/main_postdoc/analyses"
+PRES="${HOME}/Desktop/research/postdoc/materials_postdoc/presentations/"
 TRACKER="${WKPLACE}/postdoc_tracker"
 
 # For using : https://github.com/todotxt/todo.txt
@@ -328,3 +325,5 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+
+export PATH="/home/adminbrice/.pixi/bin:$PATH"
